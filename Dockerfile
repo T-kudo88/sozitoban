@@ -8,5 +8,9 @@ RUN apt-get update && apt-get install -y \
 # Composer をインストール
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# wait-for-it スクリプトをプロジェクトに追加
+COPY wait-for-it.sh /wait-for-it.sh
+RUN chmod +x /wait-for-it.sh
+
 # 作業ディレクトリを設定
 WORKDIR /var/www
